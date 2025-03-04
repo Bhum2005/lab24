@@ -64,3 +64,25 @@ void List::append(int d){
 }
 
 //Write List::remove() here
+void List::remove(int idx) {
+
+    Node* temp = root;
+
+    if (idx == 0) {
+        root = root->next;
+        delete temp;
+        return;
+    }
+
+    Node* prev = nullptr;
+    for (int i = 0; i < idx; i++) {
+        prev = temp;
+        temp = temp->next;
+        if (temp == NULL) {
+            cout << "Index out of range.\n";
+            return;
+        }
+    }
+    prev->next = temp->next;
+    delete temp;
+}
